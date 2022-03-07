@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { getAllLaunchesId, getLaunchById } from '../../components/launch/Launch'
 import { Launch } from '../../components/launch/Launch'
 import { unixTimestampToDate } from '../../utils/date'
+import Youtube from '../../utils/youtube'
 
 interface Props {
   launch: Launch
@@ -15,12 +16,7 @@ const LaunchPage: NextPage<Props> = ({ launch }) => {
       <p>Launched Date : {unixTimestampToDate(launch.launch_date_unix)}</p>
       <p>Rocket Name: {launch.rocket.rocket_name}</p>
       <p>Video :{launch.links.video_link}</p>
-      <iframe
-        width="420"
-        height="315"
-        src="https://www.youtube.com/embed/AnSNRzMEmCU"
-        title={launch.mission_name}
-      ></iframe>
+      <Youtube launch={launch}></Youtube>
     </>
   )
 }
