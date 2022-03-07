@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { getAllLaunchesId, getLaunchById } from '../../components/launch/Launch'
 import { Launch } from '../../components/launch/Launch'
+import { unixTimestampToDate } from '../../utils/date'
 
 interface Props {
   launch: Launch
@@ -11,7 +12,7 @@ const LaunchPage: NextPage<Props> = ({ launch }) => {
     <>
       <h1>Mission details</h1>
       <p>Mission Name : {launch.mission_name}</p>
-      <p>Launched Date :{launch.launch_date_unix}</p>
+      <p>Launched Date : {unixTimestampToDate(launch.launch_date_unix)}</p>
       <p>Rocket Name: {launch.rocket.rocket_name}</p>
       <p>Video :{launch.links.video_link}</p>
       <iframe
