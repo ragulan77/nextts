@@ -6,19 +6,13 @@ export const GET_LAST_THREE_LAUNCHES = gql`
       id
       mission_name
       launch_date_unix
-      rocket {
-        rocket_name
-      }
-      links {
-        video_link
-      }
     }
   }
 `
 
 export const GET_ALL_LAUNCHES_ID = gql`
   query GetAllLaunchesId {
-    launches {
+    launches(sort: "launch_date_unix", order: "desc", limit: 3) {
       id
     }
   }
