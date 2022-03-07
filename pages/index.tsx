@@ -1,11 +1,6 @@
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
-
+import { ApolloProvider } from '@apollo/client'
 import { Launches } from '../components/launch/Launch'
-
-const client = new ApolloClient({
-  uri: 'https://api.spacex.land/graphql/',
-  cache: new InMemoryCache(),
-})
+import { client } from '../utils/apolloClient'
 
 const IndexPage = () => (
   <ApolloProvider client={client}>
